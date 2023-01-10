@@ -1,0 +1,19 @@
+ARG FROM_IMAGE=does-not-exist
+
+FROM ${FROM_IMAGE}
+
+ARG USERID=1000
+ARG USERNAME=test
+
+RUN yum -y install wget libffi-devel
+
+# Install JDK 19 so we can build another JDK 19 :-)
+RUN wget https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux.x86_64.rpm
+RUN rpm -i zulu19.30.11-ca-jdk19.0.1-linux.x86_64.rpm
+
+# in case the userid/groupid already exist on this box
+#RUN groupdel ${USERID}
+
+#RUN groupadd -g ${USERID} ${USERNAME}
+#RUN useradd -m -l -u ${USERID} -g ${USERNAME} ${USERNAME}
+#USER ${USERNAME}
