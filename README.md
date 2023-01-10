@@ -1,8 +1,12 @@
 # Nitro OpenJDK Builds by Fizzed
 
-Optimized OpenJDK builds for riscv64 architecture. As of Java 19, the JIT compiler has been ported to risv64, providing
-significant performance boosts compared to the "Zero VM", which almost every linux distribution provides for riscv64
-builds as of 2023.
+Optimized OpenJDK builds for riscv64 architecture!
+
+Most popular ways of installing the JDK do not provide riscv64 builds. If they are provided (such as via debian or
+ubuntu), as of 2023, those are with the "Zero VM" which runs in interpreted mode. That mode offers terrible performance.
+
+As of Java 19, the JIT compiler has been ported to risv64, providing significant performance boosts compared to the
+"Zero VM".
 
 ## Install
 
