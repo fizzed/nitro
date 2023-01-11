@@ -19,3 +19,12 @@ To use a simple bootstrap script that installs the jdk to /usr/lib/jvm and sets 
 
 Alternatively, just download the tarballs and do this yourself. They are all published to the "v1" release in this 
 GitHub repository.
+
+## Building
+
+If you're interested in building this yourself, this repository is setup for an x86_64 host + docker.  There are some automated scripts that will setup a docker container w/ the necessary dependencies to build the OpenJDK w/ the riscv64 toolchain, and cross compile it.  It takes around 5 minutes to build.
+
+    java -jar setup/blaze.jar setup/blaze.java build_containers
+    java -jar setup/blaze.jar setup/blaze.java build_jdk19s
+    
+Once done building, the ./target/ directory will contain a .tar.gz ready for deployment.
