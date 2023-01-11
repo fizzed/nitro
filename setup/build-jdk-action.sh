@@ -104,8 +104,9 @@ mv linux-riscv64-server-release/images/jdk "${BUILD_ARCHIVE_NAME}"
 tar -c -f ${BUILD_ARCHIVE_NAME}.tar --exclude='**.debuginfo' "${BUILD_ARCHIVE_NAME}"
 gzip ${BUILD_ARCHIVE_NAME}.tar
 
+chmod 666 ${BUILD_ARCHIVE_NAME}.tar.gz
 mv ${BUILD_ARCHIVE_NAME}.tar.gz ../../
 
 RELEASE_TGZ="${BUILD_ARCHIVE_NAME}.tar.gz"
 
-echo "Built $PWD/$RELEASE_TGZ"
+echo "Built target/$RELEASE_TGZ"

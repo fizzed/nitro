@@ -22,7 +22,9 @@ GitHub repository.
 
 ## Building
 
-If you're interested in building this yourself, this repository is setup for an x86_64 host + docker.  There are some automated scripts that will setup a docker container w/ the necessary dependencies to build the OpenJDK w/ the riscv64 toolchain, and cross compile it.  It takes around 5 minutes to build.
+If you're interested in building this yourself, this repository is setup for an x86_64 host + docker.  There are some
+automated scripts that will setup a docker container w/ the necessary dependencies to build the OpenJDK w/ the riscv64
+toolchain, and cross compile it.  It takes around 3 minutes to build on an AMD 7950x.
 
     java -jar setup/blaze.jar setup/blaze.java build_containers
     java -jar setup/blaze.jar setup/blaze.java build_jdk19s

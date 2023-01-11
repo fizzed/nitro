@@ -20,7 +20,7 @@ public class blaze {
     private final List<Target> targets = asList(
         // Linux riscv64
         new Target("linux", "riscv64")
-            .setHost("bmh-jjlauer-2")
+            //.setHost("bmh-jjlauer-2")
             .setContainerImage("adoptopenjdk/centos6_build_image")
     );
 
@@ -40,8 +40,10 @@ public class blaze {
 
                 project.action(buildScript, target.getOs(), target.getArch()).run();
 
-                // copy artifacts over to us locally now
-                project.rsync("target/*.tar.gz", "target/").run();
+                // if we're running on a remote host, copy over artifacts
+                if (target.getHost() != null) {
+                    project.rsync("target/*.tar.gz", "target/").run();
+                }
             });
     }
 
