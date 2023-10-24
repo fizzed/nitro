@@ -19,7 +19,7 @@ echo " containerName: $CONTAINER_NAME"
 
 DOCKERFILE="setup/Dockerfile.linux-generic"
 
-docker build -f "$DOCKERFILE" --progress=plain \
+docker build -f "$DOCKERFILE" \
   --build-arg "FROM_IMAGE=${DOCKER_IMAGE}" \
   --build-arg USERID=${USERID} \
   --build-arg USERNAME=${USERNAME} \

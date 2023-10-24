@@ -7,6 +7,7 @@ PROJECT_DIR=$PWD
 
 BUILDOS=$1
 BUILDARCH=$2
+REPO_TAG=$3
 
 echo "Build OS: ${BUILDOS}"
 echo "Build Arch: ${BUILDARCH}"
@@ -20,7 +21,8 @@ mkdir -p target
 cd target
 
 # we drive everything in our build off a tagged version in the openjdk repository
-REPO_TAG="19+36"
+#REPO_TAG="19+36"
+#REPO_TAG="jdk-21-ga"
 
 if [ "$REPO_TAG" = "19+36" ]; then
   # what does oracle claim this tag represents?
@@ -28,12 +30,17 @@ if [ "$REPO_TAG" = "19+36" ]; then
   BUILD_MINOR=0
   BUILD_PATCH=1
   BUILD_BUILD=10
+  VERSION_TAG=19.36
+elif [ "$REPO_TAG" = "21-ga" ]; then
+  # what does oracle claim this tag represents?
+  BUILD_MAJOR=21
+  BUILD_MINOR=0
+  BUILD_PATCH=1
+  BUILD_BUILD=35
+  VERSION_TAG=21.35
 else
   echo "Unsupported openjdk repo tag ${REPO_TAG}. You need to tweak the build-jdk-action.sh script for this tag!"
 fi
-
-# generate our own tag with no + char
-VERSION_TAG=$(echo "$REPO_TAG" | sed -e "s/+/\./g");
 
 # we always generate our vendor version off the openjdk tag
 #https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux_x64.tar.gz
@@ -91,6 +98,7 @@ chmod +x ./configure
   --with-version-build=$BUILD_BUILD \
   --with-vendor-version-string=$BUILD_VERSION_STRING \
   --with-vendor-url=http://fizzed.com \
+  --disable-warnings-as-errors \
   BUILD_CC=/usr/local/gcc/bin/gcc-7.5 \
   BUILD_CXX=/usr/local/gcc/bin/g++-7.5
 

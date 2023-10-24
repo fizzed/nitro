@@ -11,6 +11,10 @@ RUN yum -y install wget libffi-devel
 RUN wget https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-linux.x86_64.rpm
 RUN rpm -i zulu19.30.11-ca-jdk19.0.1-linux.x86_64.rpm
 
+# Install JDK 21 so we can build another JDK 21 or 20 :-)
+RUN wget https://cdn.azul.com/zulu/bin/zulu21.30.15-ca-jdk21.0.1-linux.x86_64.rpm
+RUN rpm -i zulu21.30.15-ca-jdk21.0.1-linux.x86_64.rpm
+
 # in case the userid/groupid already exist on this box
 #RUN groupdel ${USERID}
 

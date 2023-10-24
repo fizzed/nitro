@@ -33,18 +33,23 @@ public class blaze {
             });
     }
 
-    public void build_jdk19s() throws Exception {
+    public void build_jdk() throws Exception {
         new Buildx(targets)
             .execute((target, project) -> {
                 String buildScript = "setup/build-jdk-action.sh";
 
-                project.action(buildScript, target.getOs(), target.getArch()).run();
+                //project.action(buildScript, target.getOs(), target.getArch(), "19+36").run();
+                project.action(buildScript, target.getOs(), target.getArch(), "21-ga").run();
 
                 // if we're running on a remote host, copy over artifacts
                 if (target.getHost() != null) {
                     project.rsync("target/*.tar.gz", "target/").run();
                 }
             });
+    }
+    
+    public void clean() throws Exception {
+        exec("sudo", "rm", "-Rf", "target").run();
     }
 
     public void tests() throws Exception {
