@@ -1,5 +1,7 @@
 # Nitro OpenJDK Builds by Fizzed
 
+## Overview
+
 Optimized OpenJDK builds for riscv64 architecture!
 
 Most popular ways of installing the JDK do not provide riscv64 builds. If they are provided (such as via debian or
@@ -7,6 +9,22 @@ ubuntu), as of 2023, those are with the "Zero VM" which runs in interpreted mode
 
 As of Java 19, the JIT compiler has been ported to risv64, providing significant performance boosts compared to the
 "Zero VM".
+
+## Sponsorship & Support
+
+![](https://cdn.fizzed.com/github/fizzed-logo-100.png)
+
+Project by [Fizzed, Inc.](http://fizzed.com) (Follow on Twitter: [@fizzed_inc](http://twitter.com/fizzed_inc))
+
+**Developing and maintaining opensource projects requires significant time.** If you find this project useful or need
+commercial support, we'd love to chat. Drop us an email at [ping@fizzed.com](mailto:ping@fizzed.com)
+
+Project sponsors may include the following benefits:
+
+- Priority support (outside of Github)
+- Feature development & roadmap
+- Priority bug fixes
+- Privately hosted continuous integration tests for their unique edge or use cases
 
 ## Install
 
